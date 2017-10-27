@@ -2,7 +2,7 @@
 Reinforcement learning repo
 
 
-Run [Pathfinder](https://github.com/perseus784/SaturnMind/Pathfinder.py)
+Run [Pathfinder](https://github.com/perseus784/SaturnMind/blob/master/Pathfinder.py)
 
 **Prerequisite:**
 * Pandas

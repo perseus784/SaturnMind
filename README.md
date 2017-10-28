@@ -2,18 +2,21 @@
 A repo to understand Reinforcement Learning, a first step towards general AI.
 
 
-## Introductions:
-**Step 1**: Define your environment and set your actions.  
-
-            e.g. Super Mario    
-            Actions: move forward, jump, duck, long jump etc.  
+## Introduction :
+**Step 1** : Define your environment and set your actions, goal.  
             
-**Step 2**: Initialize Q table wth states and actions.  
+            E.g.
+            Environment : Super Mario.(The Best game ever!)    
+            Actions : move forward, jump, duck, long jump etc. 
+            Goal : Retrieving the princess.
+            
+**Step 2** : Initialize Q table wth states and actions.  
 
             States- Current state or Position in the environment.
+                    E.g. Current location of Mario in the frame.
             Action- List freedom of movements in the environment that is defined.  
   
-  Like this one:  
+  Like this one :  
   
  | State | Forward | Jump | Duck | Ljump |
  |-------|---------|------|------|-------|
@@ -23,16 +26,17 @@ A repo to understand Reinforcement Learning, a first step towards general AI.
 
 ***Now our job is to train and adapt the above Q table by interacting with the environment in following steps*** 
 
-**Step 3**: 
-           #under construction!
+**Step 3** : 
+
+           # under construction!
             
             
 
 
-## Projects:
+## Projects :
 1. [**Grid Pathfinder**](https://github.com/perseus784/SaturnMind/blob/master/Pathfinder.py) :
 
-*Prerequisite:*
+*Prerequisite :*
 * Pandas
 * Numpy
 * Matplotlib

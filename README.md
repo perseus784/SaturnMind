@@ -92,7 +92,7 @@ This Q table can be used to successfuly complete Super Mario with much ease.*
 <img src="https://i.imgur.com/hwCwZgV.gif" alt="Mario Purge" width="550" height="300">
 </p>
 
-
+*Nostalgia, huh?*
 
 Down below are some projects which demonstrates the above steps in Python lively. 
 ___

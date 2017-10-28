@@ -83,7 +83,7 @@ A updated Q table after some movements:
             But the same Q table is kept, inorder to have knowledge of the previous generations.
             The Steps 3 - 6 is repeated again and again till Saturation or till enough experience in large cases.
  
- ## Improve. Adapt. Overcome.
+ ## Improvise. Adapt. Overcome.
  
  *Finally, we got our updated Q table with enough knowledge of the environment.
 This Q table can be used to successfuly complete Super Mario with much ease.*  

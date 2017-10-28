@@ -9,8 +9,12 @@ A repo to understand Reinforcement Learning, a first step towards general AI.
             Environment : Super Mario.(The Best game ever!)    
             Actions : move forward, jump, duck, long jump etc. 
             Goal : Retrieving the princess.
-            
-*Note: enemy tortoises are removed from the scenerio for simplicity.*  
+<p align="center">
+<img src="http://9to5animations.com/wp-content/uploads/2016/03/mario-gif-animated.gif" alt="Super Mario Environment" width="550" height="300">
+</p>  
+
+*Note: enemy tortoises and triangle shaped things are removed from the scenerio for simplicity.*  
+
 
 **Step 2** : Initialize Q table wth states and actions.  
 
@@ -38,6 +42,10 @@ A repo to understand Reinforcement Learning, a first step towards general AI.
                        Mario chooses to Jump.
                  else:
                        Mario chooses Forward.
+ <p align="center">
+<img src="https://media.giphy.com/media/gjdS9VFkMHzva/giphy.gif" alt="Super Mario" width="550" height="300">
+</p>
+ 
  
  **Step 4** : Update the Q table.
     
@@ -56,21 +64,35 @@ A updated Q table after some movements:
 
             If our hero fails to reach the goal, Update Q table with a negative reward.
             Negative rewarding a Move at that State reduces the selection of that movement in future.
+<p align="center">
+<img src="http://www.gifbin.com/bin/25yu3420sw.gif" alt="Super Mario" width="550" height="300">
+</p>
 
 **Step 6** : Reaching the goal.
             
             The above process is continued till our hero reaches the goal.
-            Once the Goal is reached, Our program completed a generation.
+            Once the Goal is reached, Our program completed a generation.  
+            
+<p align="center">
+<img src="http://img38.laughinggif.com/pic/HTTP2Nkbi5pbnF1aXNpdHIuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDEzLzA0L0ltZ3VyLU1lZXRzLVNvLU1hcmlvLUJyb3MuZ2lm.gif" alt="Super Mario Environment" width="550" height="300">
+</p>  
 
 **Step 7** : Passing Knowledge to Generations.
 
             Once a generation is complete, game is started again.
             But the same Q table is kept, inorder to have knowledge of the previous generations.
             The Steps 3 - 6 is repeated again and again till Saturation or till enough experience in large cases.
+ 
+ # Improve. Adapt. Overcome.
+ 
+ *Finally, we got our updated Q table with enough knowledge of the environment.
+This Q table can be used to successfuly complete Super Mario with much ease.*  
+
+<p align="center">
+<img src="https://i.imgur.com/hwCwZgV.gif" alt="Mario Purge" width="550" height="300">
+</p>
 
 
-*Finally, we got our updated Q table with enough knowledge of the environment.
-This Q table can be used to successfuly complete Super Mario with much ease.*
 
 Down below are some projects which demonstrates the above steps in Python lively. 
 ___

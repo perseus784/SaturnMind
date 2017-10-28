@@ -69,12 +69,10 @@ A updated Q table after some movements:
             The Steps 3 - 6 is repeated again and again till Saturation or till enough experience in large cases.
 
 
-Finally, we got our updated Q table with enough knowledge of the environment.
-
-This Q table can be used to successfuly complete Super Mario with much ease.
+*Finally, we got our updated Q table with enough knowledge of the environment.
+This Q table can be used to successfuly complete Super Mario with much ease.*
 
 Down below are some projects which demonstrates the above steps in Python lively. 
-___
 ___
             
        

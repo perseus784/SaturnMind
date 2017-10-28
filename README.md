@@ -10,6 +10,8 @@ A repo to understand Reinforcement Learning, a first step towards general AI.
             Actions : move forward, jump, duck, long jump etc. 
             Goal : Retrieving the princess.
             
+*Note: enemy tortoises are removed from the scenerio for simplicity.*  
+
 **Step 2** : Initialize Q table wth states and actions.  
 
             States- Current state or Position in the environment.
@@ -20,17 +22,62 @@ A repo to understand Reinforcement Learning, a first step towards general AI.
   
  | State | Forward | Jump | Duck | Ljump |
  |-------|---------|------|------|-------|
- | 0     | 0.0     | 0.0  | 0.0  | 0.0   |
- | 1     | 0.0     | 0.0  | 0.0  | 0.0   |
- | 2     | 0.0     | 0.0  | 0.0  | 0.0   |
+ | Frame 0     | 0.0     | 0.0  | 0.0  | 0.0   |
+ | Frame 1     | 0.0     | 0.0  | 0.0  | 0.0   |
+ | Frame 2     | 0.0     | 0.0  | 0.0  | 0.0   |
 
 ***Now our job is to train and adapt the above Q table by interacting with the environment in following steps*** 
 
-**Step 3** : 
+**Step 3** : Let the hero explore environment.
 
-           # under construction!
+            Our hero can take a random move if Q table's Move is zero or equally distributed. 
+            Else hero has to choose the move with highest reward for the present state.
             
+            For a given State:
+                 if Jump > Forward:
+                       Mario chooses to Jump.
+                 else:
+                       Mario chooses Forward.
+ 
+ **Step 4** : Update the Q table.
+    
+             Now Rewards for each move towards the goal is calculated and updated in Q table.
+             It is specific to that State and Move at that instant.
+             
+A updated Q table after some movements:
+
+| State   | Forward | Jump | Duck | Ljump |
+|---------|---------|------|------|-------|
+| Frame 0 | 0.4     | 0.0  | 0.2  | 0.9   |
+| Frame 1 | 0.6     | 0.3  | 0.0  | 0.5   |
+| Frame 2 | 0.9     | 0.7  | 0.0  | 0.0   |
+
+**Step 5** : Handling Fail conditions.
+
+            If our hero fails to reach the goal, Update Q table with a negative reward.
+            Negative rewarding a Move at that State reduces the selection of that movement in future.
+
+**Step 6** : Reaching the goal.
             
+            The above process is continued till our hero reaches the goal.
+            Once the Goal is reached, Our program completed a generation.
+
+**Step 7** : Passing Knowledge to Generations.
+
+            Once a generation is complete, game is started again.
+            But the same Q table is kept, inorder to have knowledge of the previous generations.
+            The Steps 3 - 6 is repeated again and again till Saturation or till enough experience in large cases.
+
+
+Finally, we got our updated Q table with enough knowledge of the environment.
+
+This Q table can be used to successfuly complete Super Mario with much ease.
+
+Down below are some projects which demonstrates the above steps in Python lively. 
+___
+___
+            
+       
 
 
 ## Projects :

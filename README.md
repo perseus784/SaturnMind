@@ -1,5 +1,5 @@
 # SaturnMind
-A repo to understand Reinforcement Learning, a first step towards general AI.
+A repo to understand Reinforcement Learning, the first step towards general AI.
 
 
 ## Introduction :

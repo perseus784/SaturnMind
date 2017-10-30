@@ -101,7 +101,8 @@ ___
 
 
 ## Projects :
-1. [**Grid Pathfinder**](https://github.com/perseus784/SaturnMind/blob/master/Pathfinder.py) :
+1. [**Grid Pathfinder**](https://github.com/perseus784/SaturnMind/blob/master/Pathfinder.py) & 
+[**Grid Pathfinder 3D**](https://github.com/perseus784/SaturnMind/blob/master/Pathfinder_3D.py) :
 
 *Prerequisite :*
 * Pandas

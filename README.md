@@ -10,7 +10,7 @@ A repo to understand Reinforcement Learning, the first step towards general AI.
             Actions : move forward, jump, duck, long jump etc. 
             Goal : Retrieving the princess.
 <p align="center">
-<img src="http://9to5animations.com/wp-content/uploads/2016/03/mario-gif-animated.gif" alt="Super Mario Environment" width="550" height="300">
+<img src="/media/environment.gif" alt="Super Mario Environment" width="550" height="300">
 </p>  
 
 *Note: enemy tortoises and triangle shaped things are removed from the scenerio for simplicity.*  
@@ -43,14 +43,20 @@ A repo to understand Reinforcement Learning, the first step towards general AI.
                  else:
                        Mario chooses Forward.
  <p align="center">
-<img src="https://media.giphy.com/media/gjdS9VFkMHzva/giphy.gif" alt="Super Mario" width="550" height="300">
+<img src="/media/Exploring_env.gif" alt="Super Mario" width="550" height="300">
 </p>
  
  
  **Step 4** : Update the Q table.
     
-             Now Rewards for each move towards the goal is calculated and updated in Q table.
-             It is specific to that State and Move at that instant.
+          Now Rewards for each move towards the goal is calculated and updated in Q table.
+          It is specific to that State and Move at that instant.
+             
+          Q table( State , move) = Q table( State , move) + learning_Rate *[Q table(current(S,M) - previous(S,M))]
+          
+          learning_rate= 0.1 # one step at a time.
+          S - State , M - Move.
+             
              
 A updated Q table after some movements:
 
@@ -65,7 +71,7 @@ A updated Q table after some movements:
             If our hero fails to reach the goal, Update Q table with a negative reward.
             Negative rewarding a Move at that State reduces the selection of that movement in future.
 <p align="center">
-<img src="http://www.gifbin.com/bin/25yu3420sw.gif" alt="Super Mario" width="550" height="300">
+<img src="/media/Fail.gif" alt="Super Mario" width="550" height="300">
 </p>
 
 **Step 6** : Reaching the goal.
@@ -74,7 +80,7 @@ A updated Q table after some movements:
             Once the Goal is reached, Our program completed a generation.  
             
 <p align="center">
-<img src="http://img38.laughinggif.com/pic/HTTP2Nkbi5pbnF1aXNpdHIuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDEzLzA0L0ltZ3VyLU1lZXRzLVNvLU1hcmlvLUJyb3MuZ2lm.gif" alt="Super Mario Environment" width="550" height="300">
+<img src="/media/Goal.gif" alt="Super Mario Environment" width="550" height="300">
 </p>  
 
 **Step 7** : Passing Knowledge to Generations.
@@ -89,7 +95,7 @@ A updated Q table after some movements:
 This Q table can be used to successfuly complete Super Mario with much ease.*  
 
 <p align="center">
-<img src="https://i.imgur.com/hwCwZgV.gif" alt="Mario Purge" width="550" height="300">
+<img src="/media/savage.gif" alt="Mario Purge" width="550" height="300">
 </p>
 
 *Nostalgia, huh?*
@@ -109,10 +115,12 @@ ___
 * Numpy
 * Matplotlib
 
-
 A program to navigate through a grid even with blocks in the grid.
 Code segments are explained in commented lines.
 Qlearning table is used.
 Feel free to experiment with the variables.
+<p align="center">
+<img src="/media/Pathfinder_3D.gif" alt="Mario Purge" width="600" height="350">
+</p>
 
 !!

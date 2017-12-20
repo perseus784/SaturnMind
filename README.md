@@ -100,7 +100,7 @@ This Q table can be used to successfuly complete Super Mario with much ease.*
 
 *Nostalgia, huh?*
 
-Down below are some projects which demonstrates the above steps in Python lively. 
+Down below are some programs written in Python to demonstrates the above steps lively. 
 ___
             
        

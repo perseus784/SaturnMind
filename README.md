@@ -17,7 +17,7 @@ A repo to understand Reinforcement Learning, the first step towards general AI.
 
 
 **Step 2** : Initialize Q table wth states and actions.  
-Q table AKA Quality table represents the quality of move that is being made on that state. 
+Q table AKA Quality table represents the quality of move that is being made on that state.  
 *Higher Magnitude -> Higher Quality Move* in a state.
 
             States- Current state or Position in the environment.

@@ -60,7 +60,7 @@ Q table AKA Quality table represents the quality of move that is being made on t
           S - State , M - Move.
              
              
-A updated Q table after some movements:
+An updated Q table after some movements:
 
 | State   | Forward | Jump | Duck | Ljump |
 |---------|---------|------|------|-------|

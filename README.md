@@ -122,7 +122,7 @@ Code segments are explained in commented lines.
 Qlearning table is used.
 Feel free to experiment with the variables.
 <p align="center">
-<img src="/media/Pathfinder_3D.gif" alt="Mario Purge" width="600" height="350">
+<img src="/media/Pathfinder_3D.gif" alt="PATHFINDER" width="600" height="350">
 </p>
 
 !!

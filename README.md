@@ -124,5 +124,11 @@ Feel free to experiment with the variables.
 <p align="center">
 <img src="/media/Pathfinder_3D.gif" alt="PATHFINDER" width="600" height="350">
 </p>
+-------------------------------------------------------------------------------------------------------------------------------------  
 
+## ***A Beautiful Lie...***
+***I think he is destined to do this forever, he and the Player.***  
+<p align="center">
+<img src="/media/a_lie.png" alt="PATHFINDER" width="600" height="350">
+</p>  
 !!

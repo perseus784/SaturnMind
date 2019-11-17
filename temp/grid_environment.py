@@ -63,9 +63,12 @@ class GuiGrid:
             self.generation_counter+=1
             next_node=self.grid.grid_nodes[0]
             self.step_counter=0
+            if generations//2 >= self.generation_counter >=1:
+                self.q.epsilon -= self.q.decay
             if self.generation_counter%100==0:
                 with open('track_file.txt','w') as track_file:
                     track_file.write(str(self.tracker))
+            
         '''
         new_nodes=self.grid.set_rewards(new_nodes)
         print(new_nodes)

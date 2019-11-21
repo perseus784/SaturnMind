@@ -9,6 +9,7 @@ import time
 import random
 from deep_q_network import DeepQnetwork
 from collections import deque
+
 class GuiGrid:
     def __init__(self):
         self.app=QtGui.QApplication(sys.argv)
@@ -29,9 +30,7 @@ class GuiGrid:
         self.current_node_item=opengl.GLScatterPlotItem(pos=self.current_node,color=glColor((255,0,0)),size=9)
         self.blocked=opengl.GLScatterPlotItem(pos=self.grid.blocked_nodes,color=glColor((255,255,255)),size=13)
         self.counter=0
-        self.current_state_queue=deque(maxlen=node_history_size)
-        self.next_state_queue=deque(maxlen=node_history_size)
-        [self.current_state_queue.append(self.grid.grid_nodes[0]) for i in range(node_history_size)]
+        self.previous_memory=deque(maxlen=node_history_size)
         self.generation_counter=0
         self.step_counter=0
         self.tracker=[]
@@ -39,66 +38,53 @@ class GuiGrid:
         self.window.addItem(self.blocked)
         self.window.addItem(self.current_node_item)
         self.window.addItem(self.goal)
-        #self.window.show()
+        self.window.show()
+
+    def get_batch(self,sampling_size):
+        return random.sample(self.previous_memory,sampling_size)
 
     def update(self):
-        self.indexed_current_state=[]
-        for cr in self.current_state_queue:
-            for i,k in self.grid.indexing.items():
-                if all(k==cr):
-                    self.indexed_current_state.append(i)
-                    break
+        for i,k in self.grid.indexing.items():
+            if all(k==self.current_node):
+                indexed_current_node=i
+
         #get the best next action from q table
-        action=self.dq.get_action(self.indexed_current_state)
+        action=self.dq.get_action([indexed_current_node])
         #get all the possible you can go from that point
         adjacent_nodes=self.grid.get_adjacent_nodes(self.current_node)
         #getting the next state using the best move that was made
         [[next_node,reward,ac],reached_goal]=self.grid.get_next_node(action,adjacent_nodes)
         self.step_counter+=1
+        for i,k in self.grid.indexing.items():
+            if all(k==next_node):
+                indexed_next_node=i
 
+        self.previous_memory.append([indexed_current_node,action,indexed_next_node,reward])
         if reached_goal:
             self.tracker.append([self.generation_counter,self.step_counter])
             print("-------------------------episode over-------------------------------")
             print("generation",self.generation_counter,"number of steps took",self.step_counter)
-            #time.sleep(1)
             self.generation_counter+=1
-            [self.current_state_queue.append(self.grid.grid_nodes[0]) for i in range(node_history_size)]
-            self.indexed_current_state=[]
-            for cr in self.current_state_queue:
-                for i,k in self.grid.indexing.items():
-                    if all(k==cr):
-                        self.indexed_current_state.append(i)
-                        break
             next_node=self.grid.grid_nodes[0]
             self.step_counter=0
 
             if generations//2 >= self.generation_counter >=1:
                 self.dq.epsilon -= self.dq.decay
+            
+            if self.generation_counter%10==0:
+                with open('track_file.txt','w') as track_file:
+                    track_file.write(str(self.tracker))   
 
             if self.generation_counter%100==0:
-                with open('track_file.txt','w') as track_file:
-                    track_file.write(str(self.tracker))            
-            
-        self.indexed_next_state=deque(self.indexed_current_state[:],maxlen=node_history_size)
-        for i,k in self.grid.indexing.items():
-            if all(k==next_node):
-                self.indexed_next_state.append(i)
-                break    
-        current_q_list=self.dq.predict(self.indexed_current_state)
-        next_q_list=self.dq.predict(self.indexed_next_state)
-        current_q_list=self.dq.update_q_value(reward,current_q_list[0],next_q_list[0],action)
-        _current_one_hot=np.zeros([4])
-        _current_one_hot[action]=1
-        self.dq.train(self.indexed_current_state,_current_one_hot)
+                self.dq.save_model()         
+        
+        if len(self.previous_memory)>batch_size:
+            previous_memories=self.get_batch(batch_size)
+            self.dq.train(previous_memories)
     
-        '''
-        new_nodes=self.grid.set_rewards(new_nodes)
-        print(new_nodes)
-        self.current_node,reward,action=random.choice(new_nodes)'''
         self.current_node_item.setData(pos=np.array(next_node))
         self.current_node=next_node
         self.counter+=1
-        self.current_state_queue.append(self.current_node)
         print("generation",self.generation_counter,"steps",self.step_counter)
     
     def start(self):

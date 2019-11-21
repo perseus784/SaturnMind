@@ -2,6 +2,7 @@ import numpy as np
 from config import *
 import random
 random.seed(132)
+
 class Cell:
     def __init__(self):
         counter=0
@@ -16,9 +17,9 @@ class Cell:
         for i in nodes:
             j=i[0]
             if  (self.blocked_nodes==j).all(1).any() or not (self.grid_nodes==j).all(1).any():
-                reward=-1
+                reward=-10
             elif np.array_equal(np.array(j),np.array(self.goal_node)):
-                reward=1
+                reward=10
             else:
                 reward=-1
             rewarded_nodes.append([j,reward,i[-1]])

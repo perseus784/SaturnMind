@@ -7,5 +7,5 @@ learning_rate=0.001
 discount_factor=0.95
 generations=10000
 epochs=50000
-batch_size=1
-node_history_size=3
+batch_size=32
+node_history_size=15000

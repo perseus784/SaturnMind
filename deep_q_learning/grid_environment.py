@@ -9,9 +9,11 @@ import time
 import random
 from deep_q_network import DeepQnetwork
 from collections import deque
+import argparse
 
 class GuiGrid:
-    def __init__(self):
+    def __init__(self,training_mode):
+        self.training_mode=training_mode
         self.app=QtGui.QApplication(sys.argv)
         self.window = opengl.GLViewWidget()
         self.window.setGeometry(0,410,800,800)
@@ -22,7 +24,7 @@ class GuiGrid:
         #y_axis.rotate(90,0,1,0)
         #self.window.addItem(y_axis)
         self.grid=Cell()
-        self.dq=DeepQnetwork()
+        self.dq=DeepQnetwork(training_mode)
         self.window.addItem(x_axis)
         self.current_node=self.grid.grid_nodes[0]
         self.nodes=opengl.GLScatterPlotItem(pos=self.grid.grid_nodes,color=glColor((0,255,0)),size=7)
@@ -49,22 +51,32 @@ class GuiGrid:
                 indexed_current_node=i
 
         #get the best next action from q table
-        action=self.dq.get_action([indexed_current_node])
+        action=self.dq.get_action([indexed_current_node],self.training_mode)
+
         #get all the possible you can go from that point
         adjacent_nodes=self.grid.get_adjacent_nodes(self.current_node)
+
         #getting the next state using the best move that was made
         [[next_node,reward,ac],reached_goal]=self.grid.get_next_node(action,adjacent_nodes)
+
         self.step_counter+=1
         for i,k in self.grid.indexing.items():
             if all(k==next_node):
                 indexed_next_node=i
 
+        if self.step_counter>3000:
+            return
+
         self.previous_memory.append([indexed_current_node,action,indexed_next_node,reward])
+
         if reached_goal:
             self.tracker.append([self.generation_counter,self.step_counter])
             print("-------------------------episode over-------------------------------")
+
             print("generation",self.generation_counter,"number of steps took",self.step_counter)
+
             self.generation_counter+=1
+
             next_node=self.grid.grid_nodes[0]
             self.step_counter=0
 
@@ -74,15 +86,14 @@ class GuiGrid:
             if self.generation_counter%10==0:
                 with open('track_file.txt','w') as track_file:
                     track_file.write(str(self.tracker))   
-
-            if self.generation_counter%100==0:
-                self.dq.save_model()         
         
-        if len(self.previous_memory)>batch_size:
-            previous_memories=self.get_batch(batch_size)
-            self.dq.train(previous_memories)
+        if self.training_mode:
+            if len(self.previous_memory)>batch_size:
+                previous_memories=self.get_batch(batch_size)
+                self.dq.train(previous_memories)
     
         self.current_node_item.setData(pos=np.array(next_node))
+        
         self.current_node=next_node
         self.counter+=1
         print("generation",self.generation_counter,"steps",self.step_counter)
@@ -98,6 +109,9 @@ class GuiGrid:
         self.start()
     
 if __name__ == "__main__":
-    g=GuiGrid()
+    parser=argparse.ArgumentParser(description='dqrl')
+    parser.add_argument('--train',dest="training_mode",type=bool,default=False)
+    args=parser.parse_args()
+    g=GuiGrid(args.training_mode)
     g.animation()
     

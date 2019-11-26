@@ -1,3 +1,4 @@
+import os
 grid_size=4
 no_of_blocks=5
 no_of_actions=4
@@ -9,3 +10,4 @@ generations=10000
 epochs=50000
 batch_size=32
 node_history_size=15000
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))

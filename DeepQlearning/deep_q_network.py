@@ -22,11 +22,11 @@ class DeepQnetwork:
             self.network=self.create_network(self.input_placeholder)
             self.loss = tf.reduce_mean(tf.square(self.network - self.label_placeholder))
             self.optimizer=tf.train.AdamOptimizer(learning_rate).minimize(self.loss)
-            tf.summary.scalar("loss", self.loss)
+            '''tf.summary.scalar("loss", self.loss)
             self.writer = tf.summary.FileWriter("tf_summary", graph=tf.get_default_graph())
-            self.merged = tf.summary.merge_all()
-            self.saver = tf.train.Saver(max_to_keep=4)
+            self.merged = tf.summary.merge_all()'''
             self.sess.run(tf.global_variables_initializer())  
+            #self.saver = tf.train.Saver(max_to_keep=4)
 
         self.counter=0
 
@@ -88,9 +88,10 @@ class DeepQnetwork:
         loss,_=self.sess.run([self.loss,self.optimizer],feed_dict={self.input_placeholder:np.array([current_nodes]).T,self.label_placeholder:current_action_qs})
         print("loss",loss)
 
-        if self.counter%500==0:
-            self.saver.save(self.sess, os.path.join(*[".","checkpoints","rl_weights"]),global_step=1000)
-            self.record_summary(loss,self.counter)
+        '''if self.counter%500==0:
+            self.saver.save(self.sess, os.path.join(*[".","checkpoints","rl_weights"]),global_step=1000)'''
+
+        #self.record_summary(loss,self.counter)
 
 
 

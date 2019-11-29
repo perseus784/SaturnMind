@@ -52,8 +52,8 @@ Convergence is observed after 4000 - 5000 episodes
 </p> 
 
 <p align="left">	
-<img src="/media/deep_q_learning_graph.png" alt="qlearning after training" width="440" height="400">	
-<img src="/media/tensorflow_loss.png" alt="qlearning after training" width="440" height="400">	
+<img src="/media/deep_q_learning_graph.png" alt="qlearning after training" width="420" height="400">	
+<img src="/media/tensorflow_loss.png" alt="qlearning after training" width="420" height="400">	
 </p> 
 
 ### Saving the model:

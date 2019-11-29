@@ -7,13 +7,23 @@ Reinforcement Learning Explained here: https://medium.com/@ipaar3/saturnmind-945
 * PyQt5, OpenGL
 * TensorFlow
 * Numpy
-  
+ 
+## Environment:
+<p align="center">	
+<img src="/media/exploration.gif" alt="Grid Environment" width="850" height="450">	
+</p>	
+
 # Q learning:
 
 Run [grid_environment.py](https://github.com/perseus784/SaturnMind/blob/master/Qlearning/grid_environment.py) to run just the Qlearning.
 The experimental setup is simple, it's a grid with 8x8 nodes and some blocks. The aim is to navigate to the diagonally opposite side of the grid with minimal number of steps.
-
-
+<p align="left">	
+<img src="/media/qlearningcli.gif" alt="qlearning after training" width="400" height="400">	
+<img src="/media/qlearninggui.gif" alt="qlearning after training" width="450" height="400">	
+</p>  
+<p align="center">
+<img src="https://github.com/perseus784/SaturnMind/blob/master/media/qlearning_graph.png" width="800" height="400">
+</p>
 Since there is a lot of blogs on Qlearning and how it works, lets move to Deep Q learning.
 
 # Deep Q learning:
@@ -34,13 +44,23 @@ Batch Size - 32
 ### Training:
     python grid_environment.py --train True
 
-Convergence is observed after 2000 - 3000 episodes
+Convergence is observed after 4000 - 5000 episodes 
+
+<p align="left">	
+<img src="/media/trained_cli.gif" alt="qlearning after training" width="400" height="400">	
+<img src="/media/trained.gif" alt="qlearning after training" width="450" height="400">	
+</p> 
+
+<p align="left">	
+<img src="/media/deep_q_learning_graph.png" alt="qlearning after training" width="440" height="400">	
+<img src="/media/tensorflow_loss.png" alt="qlearning after training" width="440" height="400">	
+</p> 
 
 ### Saving the model:
 See [this](https://github.com/perseus784/BvS#saving-ourmodel) to know how to save and retrieve the model.
 
 ### Prediction:
-After the model is trained for 3000 episodes, we can just quit the environment and the model is saved automatically.
+After the model is trained for 5000 episodes, we can just quit the environment and the model is saved automatically.
 
     python grid_environment.py 
 
@@ -55,7 +75,7 @@ For each prediction, we'll get q values for the 4 actions.
             now optimize the cost using Adam Optimizer.
             
             
-Reinforcement Learning Explained:
+# Reinforcement Learning Explained:
 
 ## Introduction :	
 **Step 1** : Define your environment and set your actions, goal.  	

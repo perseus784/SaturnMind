@@ -64,7 +64,7 @@ class GuiGrid:
             if all(k==next_node):
                 indexed_next_node=i
 
-        if self.step_counter>3000:
+        if self.generation_counter>5000:
             return
 
         self.previous_memory.append([indexed_current_node,action,indexed_next_node,reward])

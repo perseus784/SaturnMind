@@ -1,6 +1,5 @@
 # SaturnMind
 Custom implementation of Q learning and Deep Q learning.
-# ACTIVE RECONSTRUCTION
 Reinforcement Learning Explained here: https://medium.com/@ipaar3/saturnmind-94586f0d0158
 
 ## Requirements:
@@ -48,12 +47,12 @@ Convergence is observed after 4000 - 5000 episodes
 
 <p align="left">	
 <img src="/media/trained_cli.gif" alt="qlearning after training" width="400" height="400">	
-<img src="/media/trained.gif" alt="qlearning after training" width="450" height="400">	
+<img src="/media/trained.gif" alt="qlearning after training" width="400" height="400">	
 </p> 
 
 <p align="left">	
-<img src="/media/deep_q_learning_graph.png" alt="qlearning after training" width="420" height="400">	
-<img src="/media/tensorflow_loss.png" alt="qlearning after training" width="420" height="400">	
+<img src="/media/deep_q_learning_graph.png" alt="qlearning after training" width="400" height="400">	
+<img src="/media/tensorflow_loss.png" alt="qlearning after training" width="400" height="400">	
 </p> 
 
 ### Saving the model:

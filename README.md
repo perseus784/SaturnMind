@@ -18,7 +18,7 @@ Run [grid_environment.py](https://github.com/perseus784/SaturnMind/blob/master/Q
 The experimental setup is simple, it's a grid with 8x8 nodes and some blocks. The aim is to navigate to the diagonally opposite side of the grid with minimal number of steps.
 <p align="left">	
 <img src="/media/qlearningcli.gif" alt="qlearning after training" width="400" height="400">	
-<img src="/media/qlearninggui.gif" alt="qlearning after training" width="450" height="400">	
+<img src="/media/qlearninggui.gif" alt="qlearning after training" width="400" height="400">	
 </p>  
 <p align="center">
 <img src="https://github.com/perseus784/SaturnMind/blob/master/media/qlearning_graph.png" width="800" height="400">
